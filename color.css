@@ -1,7 +1,7 @@
 @import url("files/layout.css");
 @font-face {
   font-family: Proxima;
-  src: url("../assets/proxima.otf");
+  src: url("proxima.otf");
 }
 * { /*Initial page settings*/
 	margin: 0;
