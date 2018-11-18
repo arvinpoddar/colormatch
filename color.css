@@ -1,0 +1,114 @@
+@import url("files/layout.css");
+@font-face {
+  font-family: Proxima;
+  src: url("../assets/proxima.otf");
+}
+* { /*Initial page settings*/
+	margin: 0;
+	padding: 0;
+}
+body { /*Page clearing/stylings*/ 
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+html { 
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	font-family: Proxima, Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	min-width: 315px;
+	min-height: 330px;
+	max-height: 100%;
+}
+#intro {
+	padding-top: 15px;
+	background-color: #f2f2f2;
+}
+a {
+	text-decoration: none; /*Remove default link stylings*/
+	color: inherit;
+}
+a:hover {
+	text-decoration: underline;
+	color: inherit;
+}
+#controlbox {
+	background-color: #f2f2f2;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
+	text-align: center;
+	border-radius: 5px;
+	height: 260px;
+	min-width: 226px;
+	position: absolute;
+  	top: 50%;
+  	margin-top: -130px;
+}
+#myRed, #myGreen, #myBlue {
+	width: 100%;
+	margin: 0 auto;
+}
+.confirm {
+	width: auto;
+	height: 30px; 
+	background-color: #3079FB; 
+	border-radius: 10px; 
+	border: none;
+	font-family: Proxima, AvenirBook, Arial, Helvetica, sans-serif;
+	color: white; 
+	font-size: 15px; 
+	text-align: center; 
+	display: table-cell;
+	vertical-align: middle;
+	background: -webkit-linear-gradient(227deg, #188aeb, #9638b9);
+	background: -moz-linear-gradient(227deg, #188aeb, #9638b9);
+	background: -o-linear-gradient(227deg, #188aeb, #9638b9);
+	background: linear-gradient(227deg, #188aeb, #9638b9);
+	background-size: 400% 400%;
+	-webkit-animation: bggradient 10s ease infinite;
+	-moz-animation: bggradient 10s ease infinite;
+	-o-animation: bggradient 10s ease infinite;
+	animation: bggradient 10s ease infinite;
+	cursor: pointer;
+}
+.confirm:hover {
+	text-decoration: underline;
+}
+#sliderbox {
+	width: 100%;
+	margin: 0 auto;
+	padding: 10px;
+	
+}
+#buttonbox {
+	width: auto;
+	margin: 0 auto;
+	margin-top: -10px;
+	padding: 10px;
+}
+#computer {
+	text-align: center;
+	font-size: 24px;
+}
+#error, #answer, #check {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	text-align: center;
+}
+#instructions {
+	width: 100%;
+}
+#intro {
+	text-align: center;
+}
+@media screen and (max-width: 600px) {
+	#controlbox {
+		width: 80%;
+		margin-left: 10%;
+		margin-right: 10%;
+	}
+}

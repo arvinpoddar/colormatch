@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--- Developed by Arvin Poddar --->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arvin Poddar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="color.css">
+  <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#188aeb">
+<meta name="msapplication-TileImage" content="../mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<noscript>Uh oh! This site uses JavaScript. Your JavaScript is not on, so some functionalities may be disabled.</noscript>
+	
+	</head>
+	<body>
+		<div id="computer" style="height: 50%; width: 100%; padding-top: 5px;">ColorMatch by Arvin Poddar
+		</div>
+		<div id="user" style="height: 50%; width: 100%; padding-top: 5%;">
+				<div id="controlbox">
+				<table id="sliderbox">
+					<tr>
+						<td style="width: 12%;">Red:</td>
+						<td style="width: 80%;"><input type="range" min="0" max="255" step="1" id="myRed"></td>
+						<td style="width: 8%;"><p class="value" id="redval"></p></td>
+					</tr>
+					<tr>
+						<td>Green:</td>
+						<td><input type="range" min="0" max="255" step="1" id="myGreen"></td>
+						<td><p class="value" id="greenval"></p></td>
+					</tr>
+					<tr>
+						<td>Blue:</td>
+						<td><input type="range" min="0" max="255" step="1" id="myBlue"></td>
+						<td><p class="value" id="blueval"></p></td>
+					</tr>
+				</table>
+				<table id="buttonbox">
+					<tr>
+						<td><div id="new" class="confirm" onclick="random()" style="padding: 5px 20px; margin: 0 auto; text-align: center;">New Colors</div></td>
+						<td><div id="submit" class="confirm" onclick="submit()" style="padding: 5px 20px; margin: 0 auto; text-align: center;">Submit</div></td>
+					</tr>	
+				</table>
+					<p id ="error" style="text-align: center;">Score (Lower is Better):</p>
+					<p id ="answer" style="text-align: center;">Actual color: (---,---,---)</p>
+					<input type="checkbox" id="check" onclick="showValues()"> &nbsp; <label>Show my color values</label>
+					<div id="instructions" style="color: #929799;">Scroll down for instructions</div>
+			</div>
+		</div>
+		<div id = "intro">
+		<h2>ColorMatch</h2>
+			<p style="padding: 10px 15px;">Objective: Test your eyes with ColorMatch. Use the sliders (corresponding to RGB values) to change the color of the bottom half of the screen. Your goal is to get the top half and bottom half to be the same color. The lower your Score, the closer your color (lowest possible is 0). To test your color, click the "Submit" button. To start over, click the "New Colors" button.</p>
+		</div>
+		<script>
+		document.getElementById("check").checked = false;
+		</script>
+		<script type="text/javascript">
+		document.getElementById("redval").style.visibility = "hidden";
+		document.getElementById("greenval").style.visibility = "hidden";
+		document.getElementById("blueval").style.visibility = "hidden";
+		let error = "";
+		var input = document.querySelectorAll("input");
+		//Computer chooses random color for computer and user on document load
+		let computerR = Math.floor(Math.random()*255);
+		let computerG = Math.floor(Math.random()*255);
+		let computerB = Math.floor(Math.random()*255);
+		let randomColor = "rgb(" + computerR + ", " + computerG + ", " + computerB +")";
+		document.getElementById("computer").style.backgroundColor = randomColor;	
+		let userR = Math.floor(Math.random()*255);
+		let userG = Math.floor(Math.random()*255);
+		let userB = Math.floor(Math.random()*255);
+		document.getElementById("myRed").value = userR;
+		document.getElementById("myGreen").value = userG;
+		document.getElementById("myBlue").value = userB;
+		document.getElementById("redval").innerHTML = userR;
+		document.getElementById("greenval").innerHTML = userG;
+		document.getElementById("blueval").innerHTML = userB;
+		let userColor = "rgb(" + userR + ", " + userG + ", " + userB +")";
+		document.getElementById("user").style.backgroundColor = userColor;
+		var red,green,blue;
+		red = document.getElementById("myRed").value;
+		green = document.getElementById("myGreen").value;
+		blue = document.getElementById("myBlue").value;
+		//Listens for changes to sliders and changes accordingly
+		for(var i = 0; i < input.length; i++) {
+			input[i].addEventListener("input", function() {
+				red = document.getElementById("myRed").value;
+				green = document.getElementById("myGreen").value;
+				blue = document.getElementById("myBlue").value;
+				let userColor = "rgb(" + red + ", " + green + ", " + blue +")";
+				document.getElementById("user").style.backgroundColor = userColor;
+				document.getElementById("redval").innerHTML = red;
+				document.getElementById("greenval").innerHTML = green;
+				document.getElementById("blueval").innerHTML = blue;
+			})
+		}
+		function random() {
+				computerR = Math.floor(Math.random()*255);
+				computerG = Math.floor(Math.random()*255);
+				computerB = Math.floor(Math.random()*255);
+				randomColor = "rgb(" + computerR + ", " + computerG + ", " + computerB +")";
+				document.getElementById("computer").style.backgroundColor = randomColor;
+				userR = Math.floor(Math.random()*255);
+				userG = Math.floor(Math.random()*255);
+				userB = Math.floor(Math.random()*255);
+				document.getElementById("myRed").value = userR;
+				document.getElementById("myGreen").value = userG;
+				document.getElementById("myBlue").value = userB;
+				document.getElementById("redval").innerHTML = userR;
+				document.getElementById("greenval").innerHTML = userG;
+				document.getElementById("blueval").innerHTML = userB;
+				userColor = "rgb(" + userR + ", " + userG + ", " + userB +")";
+				document.getElementById("user").style.backgroundColor = userColor;
+				document.getElementById("error").innerHTML = "Score (Lower is Better): ";
+				document.getElementById("answer").innerHTML = "Actual Color: (---,---,---)";
+				document.getElementById("submission").innerHTML = "Your Color: (---,---,---)";
+		}
+			/*function submit () {
+				var redDif = Math.abs(((red - computerR)/computerR)*100);
+				var greenDif = Math.abs(((green - computerG)/computerG)*100);
+				var blueDif = Math.abs(((blue - computerB)/computerB)*100);
+				error = (Math.round((redDif+greenDif+blueDif)/3));
+				document.getElementById("error").innerHTML = "Distance Score:" + error;
+				document.getElementById("answer").innerHTML = "Actual Color: (" + computerR + ", " + computerG + ", " + computerB +")";
+			}*/
+			function submit () {
+				var redDif = ((red - computerR)*(red - computerR));
+				var greenDif = ((green - computerG)*(green - computerG));
+				var blueDif = ((blue - computerB)*(blue - computerB));
+				error = Math.round(Math.sqrt(redDif + greenDif + blueDif));
+				document.getElementById("error").innerHTML = "Score (Lower is Better): " + error;
+				document.getElementById("answer").innerHTML = "Actual Color: (" + computerR + ", " + computerG + ", " + computerB +")";
+			}
+			function showValues() {
+				if (document.getElementById("check").checked == true) {
+    				document.getElementById("redval").style.visibility = "visible";
+					document.getElementById("greenval").style.visibility = "visible";
+					document.getElementById("blueval").style.visibility = "visible";
+				} 
+				else {
+					document.getElementById("redval").style.visibility = "hidden";
+					document.getElementById("greenval").style.visibility = "hidden";
+					document.getElementById("blueval").style.visibility = "hidden";
+				}
+}
+		</script>
+</body>
+</html>
